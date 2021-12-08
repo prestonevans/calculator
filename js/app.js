@@ -6,6 +6,7 @@ const operators = document.querySelectorAll('.operator');
 const sumBtn = document.querySelector('input[value="="]');
 let tempNumber = '0';
 let operator = '+';
+let tempOperator = '';
 let sum = null;
 
 display.innerText = tempNumber;
@@ -28,10 +29,39 @@ clearAll.addEventListener('click', () => {
 });
 operators.forEach((op) => {
 	op.addEventListener('click', () => {
+		if (op.value !== operator && tempOperator !== '=') {
+			if (tempNumber == 0) return;
+				if (sum == null) {
+					sum = Number(tempNumber);
+					tempNumber = '0';
+					display.innerText = tempNumber;
+				}
+				if (operator === '+') {
+					sum += Number(tempNumber);
+					display.innerText = sum;
+					tempNumber = '0';
+				}
+				if (operator === '-') {
+					sum -= Number(tempNumber);
+					display.innerText = sum;
+					tempNumber = '0';
+				}
+				if (operator === '/') {
+					sum /= Number(tempNumber);
+					display.innerText = sum;
+					tempNumber = '0';
+				}
+				if (operator === '*') {
+					sum *= Number(tempNumber);
+					display.innerText = sum;
+					tempNumber = '0';
+				}
+		}
 		if (op.value === '+') operator = '+';
 		if (op.value === '-') operator = '-';
 		if (op.value === '/') operator = '/';
 		if (op.value === 'x') operator = '*';
+		tempOperator = op.value;
 		if (tempNumber == 0) return;
 		if (sum == null) {
 			sum = Number(tempNumber);
@@ -65,31 +95,3 @@ operators.forEach((op) => {
 		}
 	});
 });
-// sumBtn.addEventListener('click', () => {
-// 	if (sum == null) return;
-// 	if (operator === '+') {
-// 		sum += Number(tempNumber);
-// 		display.innerText = sum;
-// 		tempNumber = '0';
-// 		return;
-// 	}
-// 	if (operator === '-') {
-// 		sum -= Number(tempNumber);
-// 		display.innerText = sum;
-// 		tempNumber = '0';
-// 		return;
-// 	}
-// 	if (operator === '/') {
-// 		console.log(sum, tempNumber);
-// 		sum /= Number(tempNumber);
-// 		display.innerText = sum;
-// 		tempNumber = '0';
-// 		return;
-// 	}
-// 	if (operator === '*') {
-// 		sum *= Number(tempNumber);
-// 		display.innerText = sum;
-// 		tempNumber = '0';
-// 		return;
-// 	}
-// });
