@@ -1,5 +1,25 @@
-
-.display {
-	width: 20vw;
-	height: 1rem;
+body {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+form {
+	display: grid;
+	grid-template-columns: repeat(4, 10vw);
+}
+.display {
+	grid-area: 1 / span 4;
+}
+input {
+	height: 10vw;
+}
+input[value='0'] {
+	grid-column: span 2;
+}
+input[value='clear all'] {
+	grid-column: span 2;
+}
+// input[value='clear'] {
+// 	grid-column: span 2;
+// }
