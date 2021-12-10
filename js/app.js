@@ -1,6 +1,6 @@
 const display = document.querySelector('.display');
 const numbers = document.querySelectorAll('input.number');
-const clear = document.querySelector('input[value="clear"]');
+const clear = document.querySelector('input[value="clr"]');
 const clearAll = document.querySelector('input[value="clear all"]');
 const operators = document.querySelectorAll('.operator');
 const sumBtn = document.querySelector('input[value="="]');

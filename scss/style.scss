@@ -5,22 +5,33 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: var(--primary);
 }
 :root {
-	--cell-size: clamp(1rem, 10vmin, 6rem);
-	--dynamic-text: clamp(1rem, 7vmin, 4.5rem);
+	--cell-size: clamp(1rem, 22vmin, 6rem);
+	--dynamic-text: clamp(1rem, 15vmin, 4.5rem);
+	--primary: #3d405b;
+	--secondary: #e07a5f;
+	--white: #f4f1de;
+	--transition: .1s linear;
 }
 form {
 	display: grid;
 	grid-template-columns: repeat(4, var(--cell-size));
-	gap: 1vmin;
+	gap: calc(2px + 1vmin);
 }
 .display {
 	grid-area: 1 / span 4;
+	color: var(--white);
+	font-size: var(--dynamic-text);
+	font-weight: 100;
 }
 input {
 	height: var(--cell-size);
 	cursor: pointer;
+	background-color: var(--white);
+	color: var(--primary);
+	font-size: 1.5rem;
 }
 input[value='0'] {
 	grid-column: span 2;
@@ -30,6 +41,12 @@ input[value='clear all'] {
 }
 input {
 	border-style: none;
+	border: 0px solid var(--secondary);
+	transition: border-width var(--transition);
+	text-transform:capitalize;
+}
+input:hover {
+	border-width: 4px;
 }
 input.number:not(input[value='0']) {
 	border-radius: 50%;
@@ -37,8 +54,4 @@ input.number:not(input[value='0']) {
 input:not(.number),
 input[value='0'] {
 	border-radius: 30px;
-}
-.display {
-	font-size: var(--dynamic-text);
-	font-weight: 100;
 }
