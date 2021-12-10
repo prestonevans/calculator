@@ -1,13 +1,21 @@
 body {
   min-height: 100vh;
+  padding: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+:root {
+  --cell-size: clamp(1rem, 10vmin, 6rem);
+  --dynamic-text: clamp(1rem, 7vmin, 4.5rem);
+}
+
 form {
   display: grid;
-  grid-template-columns: repeat(4, 10vw);
+  grid-template-columns: repeat(4, var(--cell-size));
+  gap: 1vmin;
 }
 
 .display {
@@ -15,7 +23,8 @@ form {
 }
 
 input {
-  height: 10vw;
+  height: var(--cell-size);
+  cursor: pointer;
 }
 
 input[value="0"] {
@@ -24,6 +33,24 @@ input[value="0"] {
 
 input[value="clear all"] {
   grid-column: span 2;
+}
+
+input {
+  border-style: none;
+}
+
+input.number:not(input[value="0"]) {
+  border-radius: 50%;
+}
+
+input:not(.number),
+input[value="0"] {
+  border-radius: 30px;
+}
+
+.display {
+  font-size: var(--dynamic-text);
+  font-weight: 100;
 }
 
 /*# sourceMappingURL=style.css.map */
